@@ -50,16 +50,16 @@ export default [
         "body": {
           "func": ["admin:perms:add"],
           "routers": [{
-            "path": "/index",
+            "path": "/sys",
             "component": "Layout",
             "meta": {
-              "title": "主页",
+              "title": "系统配置",
               "icon": "dashboard"
             },
             "children": [{
-              "path": "index",
+              "path": "menu",
               "name": "Index2",
-              "component": "index/index",
+              "component": "sys/menu/index",
               "meta": {
                 "title": "Index",
                 "icon": "dashboard"

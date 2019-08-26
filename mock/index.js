@@ -3,10 +3,13 @@ import { param2Obj } from '../src/utils'
 
 import user from './user'
 import table from './table'
+// 菜单
+import menu from "./sys/menu"
 
 const mocks = [
   ...user,
-  ...table
+  ...table,
+  ...menu
 ]
 
 // for front mock

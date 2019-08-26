@@ -43,8 +43,6 @@ router.beforeEach(async(to, from, next) => {
     } else {
       // const hasGetUserInfo = store.getters.name
       const hasRoutes = store.getters.myRoutes && store.getters.myRoutes.length > 0
-      console.log("info " + JSON.stringify(store.getters))
-      console.log("routers" +hasRoutes)
       if (hasRoutes) {
         next()
       } else {
