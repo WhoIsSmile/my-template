@@ -16,8 +16,13 @@
         <!-- 下拉列表-->
         <el-form-item label="父级菜单" :label-width="formLabelWidth" prop="parentMenuId">
           <el-col :span="18">
-            <el-select v-model="form.parentId" placeholder="请选择" :disabled="editAble">
-              <el-option v-for="item in parentData" :key="item.code" :label="item.name" :value="item.id"></el-option>
+            <el-select v-model="form.parentMenuId" placeholder="请选择" :disabled="editAble">
+              <el-option
+                v-for="item in parentData"
+                :key="item.code"
+                :label="item.name"
+                :value="item.id"
+              ></el-option>
             </el-select>
           </el-col>
         </el-form-item>
@@ -28,7 +33,11 @@
               <template slot="prepend">
                 <Ic :icon="form.icon" />
               </template>
-              <el-button slot="append" icon="el-icon-circle-plus-outline" @click="iconVisible = true"></el-button>
+              <el-button
+                slot="append"
+                icon="el-icon-circle-plus-outline"
+                @click="iconVisible = true"
+              ></el-button>
             </el-input>
           </el-col>
         </el-form-item>
@@ -39,7 +48,12 @@
           </el-col>
         </el-form-item>
 
-        <el-form-item label="组件名" :label-width="formLabelWidth" prop="component" v-show="formComponentVisible">
+        <el-form-item
+          label="组件名"
+          :label-width="formLabelWidth"
+          prop="component"
+          v-show="formComponentVisible"
+        >
           <el-col :span="18">
             <el-input v-model="form.component" placeholder="请输入组件名"></el-input>
           </el-col>
@@ -111,7 +125,7 @@ export default {
       formComponentVisible: true,
       form: {
         id: "",
-        parentId: "",
+        parentMenuId: "",
         menuName: "",
         path: "",
         icon: "",
@@ -149,13 +163,34 @@ export default {
     }
   },
   watch: {
-    // 监控parentId 的值
-    "form.parentId": function(val, oldval) {
+    // 监控parentMenuId 的值
+    "form.parentMenuId": function(val, oldval) {
       if (parseInt(val) == 0) {
         this.form.component = layout;
         this.formComponentVisible = false;
-      }else{
+      } else {
         this.formComponentVisible = true;
+      }
+    },
+    // 编辑
+    editData(val) {
+      if (val && val.id) {
+        this.form.id = val.id;
+        this.form.parentMenuId = val.parentMenuId;
+        this.form.menuName = val.menuName;
+        this.form.path = val.path;
+        this.form.icon = val.icon;
+        this.form.component = val.component;
+        this.form.orderNo = val.orderNo;
+        // this.editAble = true;
+      } else {
+        this.form.id = "";
+        this.form.parentMenuId = "";
+        this.form.menuName = "";
+        this.form.path = "";
+        this.form.icon = "";
+        this.form.component = "";
+        this.form.orderNo = 1;
       }
     }
   },

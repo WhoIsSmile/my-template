@@ -17,7 +17,13 @@ export default {
     const vnodes = []
 
     if (icon) {
-      vnodes.push(<svg-icon icon-class={icon}/>)
+      let arr = icon.split('\|')
+      if(arr.length>1){
+        vnodes.push(<svg-icon icon-class={arr[1]}/>)
+      }else{
+        vnodes.push(<svg-icon icon-class={icon}/>)
+      }
+      
     }
 
     if (title) {

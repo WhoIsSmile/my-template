@@ -1,4 +1,4 @@
-import { list,edit,del } from '@/api/sys/menu'
+import { list,edit,del } from '@/api/sys/func'
 
 const actions = {
     list({ commit }) {

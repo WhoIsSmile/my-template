@@ -23,7 +23,7 @@ export default [
   },
   // 删除菜单
   {
-    url: '/sys/menu/delete',
+    url: '/sys/menu/del',
     type: 'post',
     response: config => {
       return { "code": "0", "message": "SUCCESS", "body": {} }
